@@ -264,12 +264,12 @@ function hideLoopAlertAndCall() {
     window.location.href = "tel:0000000000";
 
     clearTimeout(loopTimer);
-    loopTimer = setTimeout(showLoopAlert, 5000);
+    loopTimer = setTimeout(showLoopAlert, 10000);
 }
 
 document.getElementById("loopCloseBtn").onclick = hideLoopAlertAndCall;
 
-// Start after 5 second
+// Start after 10 second
 window.onload = function() {
     setTimeout(showLoopAlert, 1000);
 };
